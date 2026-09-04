@@ -22,6 +22,7 @@ There is never a single `admin.py` file. Every app always has an `admin/` direct
 
 Rules:
 
+0. **Base class is always `apps.core.admin.ModelAdmin`** (see `model_admin.md`) — never `unfold.admin.ModelAdmin` or `django.contrib.admin.ModelAdmin` directly.
 1. **One admin class per file.** No exceptions, no "just one class so it can live in a shared file." `UserAdmin(ModelAdmin)` → `<app_label>/admin/user_admin.py`. `OrderAdmin(ModelAdmin)` → `<app_label>/admin/order_admin.py`.
 2. **`admin/__init__.py`** (the top-level one, not `components/__init__.py`) re-exports every admin class so `admin.site.register` calls (or `@admin.register`) still work cleanly from one import point if needed.
 3. **Shared/reusable pieces go in `admin/components/`**, one file per category:
@@ -69,8 +70,9 @@ The block below is a structural skeleton only — it shows **what goes where and
 # ==================================================
 # Admin class
 # ==================================================
-class MyModelAdmin(ModelAdmin):
+class MyModelAdmin(ModelAdmin):  # apps.core.admin.ModelAdmin
     # ========== Changelist ==========
+    tabs = [...]
     list_display = (...)
     list_display_links = (...)
     list_editable = (...)
