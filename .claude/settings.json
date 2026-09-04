@@ -1,0 +1,86 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python manage.py runserver*)",
+      "Bash(python manage.py test*)",
+      "Bash(python manage.py makemigrations*)",
+      "Bash(python manage.py migrate*)",
+      "Bash(python manage.py shell*)",
+      "Bash(python manage.py showmigrations*)",
+      "Bash(python manage.py createsuperuser*)",
+      "Bash(python manage.py collectstatic*)",
+      "Bash(python manage.py check*)",
+      "Bash(python manage.py dbshell*)",
+      "Bash(python -m pytest*)",
+      "Bash(pytest*)",
+
+      "Bash(pip install*)",
+      "Bash(pip freeze*)",
+      "Bash(pip list*)",
+      "Bash(pip show*)",
+
+      "Bash(ruff*)",
+      "Bash(black*)",
+      "Bash(isort*)",
+      "Bash(flake8*)",
+      "Bash(mypy*)",
+
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git branch*)",
+      "Bash(git checkout*)",
+      "Bash(git stash*)",
+
+      "Bash(dir*)",
+      "Bash(type*)",
+      "Bash(findstr*)",
+      "Bash(where*)",
+
+      "Read(./**)",
+      "Edit(./**)",
+      "Write(./**)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/secrets/**)",
+      "Read(**/settings/production.py)",
+      "Read(**/settings/prod.py)",
+      "Read(./**/*.pem)",
+      "Read(./**/*.key)",
+      "Read(./**id_rsa*)",
+
+      "Bash(python manage.py migrate* --settings=*production*)",
+      "Bash(python manage.py migrate* --settings=*prod*)",
+      "Bash(python manage.py flush*)",
+      "Bash(python manage.py sqlflush*)",
+
+      "Bash(git push*)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean*)",
+
+      "Bash(curl:*)",
+      "Bash(rm -rf*)",
+      "Bash(del /s*)",
+      "Bash(rmdir /s*)",
+
+      "WebFetch"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "config.settings",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+
+  "includeCoAuthoredBy": false,
+  "cleanupPeriodDays": 14,
+  "outputStyle": "concise"
+}
